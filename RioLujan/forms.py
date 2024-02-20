@@ -5,13 +5,13 @@ from .models import Lote, Recinto, Estado_De_Aprobacion
 
 # poner las preguntas en el orden margen, lote propietario ydatos
 
-class LoteForm(forms.ModelForm):
+class Lote_Form(forms.ModelForm):
     class Meta:
         model = Lote
         fields = ['margen', 'lote', 'propietario', 'volfirme']
        
 
-class RecintoForm(forms.ModelForm):
+class Recinto_Form(forms.ModelForm):
     class Meta:
         model = Recinto
         fields = ['lote', 'nombre', 'margen', 'capacidad']
@@ -19,7 +19,8 @@ class RecintoForm(forms.ModelForm):
             'lote': forms.Select(choices=Lote.objects.values_list('lote', 'lote'))
         }
 
-class EstadoDeAprobacionForm(forms.ModelForm):
+
+class Estado_De_Aprobacion_Form(forms.ModelForm):
     # Definir opciones para el campo estado
     ESTADO_CHOICES = [
         ('Firmada', 'Firmada'),
