@@ -1,8 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    {% load static %}
-    <a class="bootstrap-icons" href="{% url 'reseñas' %}">Salir</a>
+
+    <!DOCTYPE html>
+    <html lang="es">
+        {% extends 'RioLujan/origen.html' %}
+        {% block head%}
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+            <meta name="description" content="" />
+            <meta name="author" content="" />
+            <title>Landing Page - Start Bootstrap Theme</title>
+            <!-- Favicon-->
+            <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    
+        {% endblock %}
+
+    <a class="bootstrap-icons" href="{% url 'seleccionar' %}">Salir</a>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -32,15 +43,21 @@
             color: white;
         }
     </style>
-</head>
+
 <body>
+    <div class="button-container"> 
+        <form action="{% url 'carga_Estado_De_Aprobacion'%}" method="get">
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+    {% if estado is not null%}
     {% for estado in estados %}
         <div class="estado-aprobacion-container">
-            <p><strong>Lote - Parcela:</strong> {{ estado.lote }}</p> 
-            <p><strong>Fecha de Actualización:</strong> {{ estado.actualizacion }}</p> 
-            <p><strong>Estado:</strong> {{ estado.estado }}</p> 
-            <p><strong>Denominación:</strong> {{ estado.denminacion }}</p> 
-            <p><strong>Capacidad:</strong> {{ estado.capacidad }}</p> 
+            <p><strong>Lote - Parcela: </strong> {{ estado.lote }}</p> 
+            <p><strong>Fecha de Actualización: </strong> {{ estado.actualizacion }}</p> 
+            <p><strong>Estado: </strong> {{ estado.estado }}</p> 
+            <p><strong>Denominación: </strong> {{ estado.denminacion }}</p> 
+            <p><strong>Capacidad: </strong> {{ estado.capacidad }}</p> 
+            <p><strong>Ultima modificacion: </strong> {{ estado.usuario }}</p> 
 
             <div class="button-container"> 
                 <form action="{% url 'update_Estado_De_Aprobacion' estado.id %}" method="get">
@@ -49,5 +66,6 @@
             </div>
         </div>
     {% endfor %}
+    {% endif %}
 </body>
 </html>

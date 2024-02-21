@@ -1,11 +1,19 @@
-<!-- select_reseña.html -->
 
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    {% load static %}
-    <a class="bootstrap-icons" href="{% url 'reseñas' %}">Salir</a>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    {% extends 'RioLujan/origen.html' %}
+    {% block head%}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Landing Page - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    {% endblock %}
+
+
     <style>
         body {
             padding: 20px;
@@ -34,14 +42,17 @@
             color: white;
         }
     </style>
-</head>
+
 <body>
 
             <div class="button-container"> 
                 <form action="{% url 'Estado_De_Aprobacion' %}" method="get">
                     <button type="submit" class="btn btn-primary">Finalizar</button>
+                    
                 </form>
-
+                <form action="{% url 'carga_Estado_De_Aprobacion' %}" method="get">
+                    <button type="submit" class="btn btn-primary">Agregar Otro</button>
+                </form>
             </div>
 
 

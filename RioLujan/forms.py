@@ -15,33 +15,23 @@ class Recinto_Form(forms.ModelForm):
     class Meta:
         model = Recinto
         fields = ['lote', 'nombre', 'margen', 'capacidad']
-        widgets = {
-            'lote': forms.Select(choices=Lote.objects.values_list('lote', 'lote'))
-        }
 
 
-class Estado_De_Aprobacion_Form(forms.ModelForm):
+class Estado_De_Aprobacion_Form(forms.Form):
     # Definir opciones para el campo estado
-    ESTADO_CHOICES = [
+    ESTADO_CHOICES = [('',''),
         ('Firmada', 'Firmada'),
         ('DPH', 'DPH'),
         ('Tratativas', 'Tratativas'),
     ]
     
     # Definir los campos del formulario
-    lote = forms.ModelChoiceField(queryset=Lote.objects.all(), empty_label=None)
-    actualizacion = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    estado = forms.ChoiceField(choices=ESTADO_CHOICES)
-    
-    class Meta:
-        model = Estado_De_Aprobacion
-        fields = ['lote', 'actualizacion', 'estado', 'denminacion', 'capacidad']
-        
-    # Personalizar campos denominacion y capacidad para que no sean obligatorios
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['denminacion'].required = False
-        self.fields['capacidad'].required = False
+    lote = forms.ModelChoiceField(queryset=Lote.objects.all(),  empty_label=None, to_field_name="lote", widget=forms.Select(attrs={'class': 'form-control'}),required=True) #quiero que sea una lista despegable de los que ya existen
+    puntuacion = forms.FloatField(min_value=0,max_value=5,required=True) 
+    actualizacion = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}),required=True)
+    estado = forms.ChoiceField(choices=ESTADO_CHOICES,required=True)
+    denominacion = forms.CharField(label="Nombre",required=False)
+    capacidad = forms.CharField(label="Nombre",required=False)
 
 
 
