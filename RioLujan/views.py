@@ -58,7 +58,7 @@ def carga_Estado_De_Aprobacion (request):
                 lote=info["lote"],
                 actualizacion=info["actualizacion"],
                 estado=info["estado"],
-                denominacion = info["denminacion"],
+                denominacion = info["denominacion"],
                 capacidad=info["capacidad"],
                 usuario=request.user
             )

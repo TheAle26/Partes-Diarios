@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Sum
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Lote(models.Model):
@@ -28,12 +29,12 @@ class Recinto(models.Model):
 
 
 class Estado_De_Aprobacion(models.Model):
-    lote= models.CharField(max_length=99,verbose_name="Lote - Parcela",null=True)
-    actualizacion= models.DateField(verbose_name="Fecha de Actualizacion",null=True)
-    estado= models.CharField(max_length=99,verbose_name="Estado",null=True)
-    denominacion= models.CharField(max_length=99,verbose_name="Denominacion",null=True)
-    capacidad= models.IntegerField(verbose_name="Capacidad",null=True)
-    usuario = models.CharField(max_length=99,verbose_name="Ultima modificacion",null=True)
+    lote= models.CharField(max_length=99, verbose_name="Lote - Parcela")
+    actualizacion= models.DateField(verbose_name="Fecha de Actualizacion")
+    estado= models.CharField(max_length=99, verbose_name="Estado")
+    denominacion= models.CharField(max_length=99, verbose_name="Denominacion")
+    capacidad= models.IntegerField(verbose_name="Capacidad")
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Ultima modificacion")
 
     def __str__(self):
         return self.lote

@@ -13,7 +13,8 @@
 
     {% endblock %}
 
-
+    {% block tituloGrande %}
+    
     <style>
         body {
             padding: 20px;
@@ -41,13 +42,15 @@
         .delete-button {
             color: white;
         }
+        
     </style>
 
 <body>
-
+    <p style="background-color: rgba(0, 0, 0, 0.3); padding: 10px; font-size: 20px; font-weight: bold; color: #ffffff;">Carga Exitosa</p>
             <div class="button-container"> 
                 <form action="{% url 'Estado_De_Aprobacion' %}" method="get">
-                    <button type="submit" class="btn btn-primary">Finalizar</button>
+                    <a href="{% url 'Estado_De_Aprobacion' %}" class="btn btn-primary">Finalizar</a>
+
                     
                 </form>
                 <form action="{% url 'carga_Estado_De_Aprobacion' %}" method="get">
@@ -56,12 +59,8 @@
             </div>
 
 
-            <div class="button-container"> 
-                <form action="{% url 'carga_Estado_De_Aprobacion' %}" method="get">
-                    <button type="submit" class="btn btn-primary">Agregar Otro</button>
-                </form>
-
-            </div>
+            
 </body>
+{% endblock %}
 </html>
 

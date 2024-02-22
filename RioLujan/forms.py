@@ -17,21 +17,27 @@ class Recinto_Form(forms.ModelForm):
         fields = ['lote', 'nombre', 'margen', 'capacidad']
 
 
-class Estado_De_Aprobacion_Form(forms.Form):
-    # Definir opciones para el campo estado
-    ESTADO_CHOICES = [('',''),
-        ('Firmada', 'Firmada'),
-        ('DPH', 'DPH'),
-        ('Tratativas', 'Tratativas'),
-    ]
-    
-    # Definir los campos del formulario
-    lote = forms.ModelChoiceField(queryset=Lote.objects.all(),  empty_label=None, to_field_name="lote", widget=forms.Select(attrs={'class': 'form-control'}),required=True) #quiero que sea una lista despegable de los que ya existen
-    puntuacion = forms.FloatField(min_value=0,max_value=5,required=True) 
-    actualizacion = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}),required=True)
-    estado = forms.ChoiceField(choices=ESTADO_CHOICES,required=True)
-    denominacion = forms.CharField(label="Nombre",required=False)
-    capacidad = forms.CharField(label="Nombre",required=False)
+class Estado_De_Aprobacion_Form(forms.ModelForm):
+    class Meta:
+        model = Estado_De_Aprobacion
+        fields = ['lote', 'actualizacion', 'estado', 'denominacion', 'capacidad']
+        labels = {
+            'lote': 'Lote - Parcela',
+            'actualizacion': 'Fecha de Actualizacion',
+            'estado': 'Estado',
+            'denominacion': 'Denominacion',
+            'capacidad': 'Capacidad'
+        }
+        widgets = {
+            'actualizacion': forms.DateInput(attrs={'type': 'date'}),
+            'estado': forms.Select(choices=[('Firmada', 'Firmada'), ('DPH', 'DPH'), ('Tratativas', 'Tratativas')]),
+            'lote': forms.Select(choices=[(lote.id, lote.lote) for lote in Lote.objects.all()])
+        }
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            for field_name, field in self.fields.items():
+                field.required = True
 
 
 
