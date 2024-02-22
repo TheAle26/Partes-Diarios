@@ -1,13 +1,11 @@
 
-    <!DOCTYPE html>
-    <html lang="es">
         {% extends 'RioLujan/origen.html' %}
         {% block head%}
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
             <meta name="description" content="" />
             <meta name="author" content="" />
-            <title>Landing Page - Start Bootstrap Theme</title>
+            <title>Estados de Aprobacion</title>
             <!-- Favicon-->
             <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     
@@ -15,6 +13,10 @@
 
     <a class="bootstrap-icons" href="{% url 'seleccionar' %}">Salir</a>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+    {% block debajomasthead %}
     <style>
         body {
             padding: 20px;
@@ -43,29 +45,42 @@
             color: white;
         }
     </style>
-
+    <div class="container d-flex justify-between -l"> <!-- Centra el contenido horizontalmente -->
+        
+            <form action="{% url 'carga_Estado_De_Aprobacion'%}" method="get">
+                <button type="submit" class="btn btn-primary">Agregar</button> <!-- Botón dentro del formulario -->
+            </form>
+        
+    </div>
+    
 <body>
-    <div class="button-container"> 
-        <form action="{% url 'carga_Estado_De_Aprobacion'%}" method="get">
-            <button type="submit" class="btn btn-primary">Agregar</button>
-        </form>
-    {% if estado is not null%}
-    {% for estado in estados %}
-        <div class="estado-aprobacion-container">
-            <p><strong>Lote - Parcela: </strong> {{ estado.lote }}</p> 
-            <p><strong>Fecha de Actualización: </strong> {{ estado.actualizacion }}</p> 
-            <p><strong>Estado: </strong> {{ estado.estado }}</p> 
-            <p><strong>Denominación: </strong> {{ estado.denminacion }}</p> 
-            <p><strong>Capacidad: </strong> {{ estado.capacidad }}</p> 
-            <p><strong>Ultima modificacion: </strong> {{ estado.usuario }}</p> 
 
-            <div class="button-container"> 
-                <form action="{% url 'update_Estado_De_Aprobacion' estado.id %}" method="get">
-                    <button type="submit" class="btn btn-primary">Editar</button>
-                </form>
+    
+    <div class="container-fluid">
+        <div class="row">
+            {% for estado in estados %}
+            <div class="col-md-6 col-lg-4 col-xl-3"> <!-- Cada estado ocupará 6 columnas en pantallas medianas, 4 en grandes y 3 en extra grandes -->
+                <div class="estado-aprobacion-container">
+                    <p><strong>Lote - Parcela: </strong> {{ estado.lote }}</p> 
+                    <p><strong>Fecha de Actualización: </strong> {{ estado.actualizacion }}</p> 
+                    <p><strong>Estado: </strong> {{ estado.estado }}</p> 
+                    <p><strong>Denominación: </strong> {{ estado.denminacion }}</p> 
+                    <p><strong>Capacidad: </strong> {{ estado.capacidad }}</p> 
+                    <p><strong>Ultima modificacion: </strong> {{ estado.usuario }}</p> 
+    
+                    <div class="button-container"> 
+                        <form action="{% url 'update_Estado_De_Aprobacion' estado.id %}" method="get">
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                        </form>
+                    </div>
+                </div>
             </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-    {% endif %}
+    </div>
+    
+    
 </body>
+
+{% endblock %}
 </html>
