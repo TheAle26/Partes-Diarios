@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-    {% extends 'RioLujan/origen.html' %}
+{% extends 'RioLujan/FormulariosPlantilla.html' %}
     {% block head%}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
@@ -12,52 +10,28 @@
 
     {% endblock %}
 
-<body>
-    <div class="button-container"> 
-        <form action="{% url 'Estado_De_Aprobacion'%}" method="get">
-            <button type="submit" class="btn btn-primary">Volver</button>
-        </form>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Estado de Aprobación Formulario</div>
-                    <div class="card-body">
-                        
-                        {% block tituloGrande %}
-                        {{ mensaje }}
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                                <label for="lote" class="form-label">Lote - Parcela</label>
-                                {{ form.lote }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="actualizacion" class="form-label">Fecha de Actualizacion</label>
-                                {{ form.actualizacion }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="estado" class="form-label">Estado</label>
-                                {{ form.estado }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="denominacion" class="form-label">Denominacion</label>
-                                {{ form.denominacion }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="capacidad" class="form-label">Capacidad</label>
-                                {{ form.capacidad }}
-                            </div>
-                            <button type="submit" class="btn btn-primary">Agregar</button>
-                        </form>
 
-                        
-                        {% endblock %}
-                    </div>
-                </div>
-            </div>
-        </div>
+    {% block formulario %}
+    <div class="mb-3">
+        <label for="lote" class="form-label">Lote - Parcela</label>
+        {{ form.lote }}
     </div>
-</body>
+    <div class="mb-3">
+        <label for="actualizacion" class="form-label">Fecha de Actualizacion</label>
+        {{ form.actualizacion }}
+    </div>
+    <div class="mb-3">
+        <label for="estado" class="form-label">Estado</label>
+        {{ form.estado }}
+    </div>
+    <div class="mb-3">
+        <label for="denominacion" class="form-label">Denominacion</label>
+        {{ form.denominacion }}
+    </div>
+    <div class="mb-3">
+        <label for="capacidad" class="form-label">Capacidad</label>
+        {{ form.capacidad }}
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar</button>
+{% endblock %}
 
-</html>

@@ -109,8 +109,10 @@ def update_Estado_De_Aprobacion (request, estado_id):
 
             
             # Recargamos la lista de restaurantes después de la actualizació
+            Estado_De_Aprobacion_update.save()
+            reseñas = Estado_De_Aprobacion.objects.all()
 
-            return redirect('Estado_De_Aporobacion')
+            return redirect('Estado_De_Aprobacion')
     else:
         formulario = RioLujan.forms.Estado_De_Aprobacion_Form(initial={
             "lote": Estado_De_Aprobacion_update.lote,

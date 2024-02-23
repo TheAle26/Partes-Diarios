@@ -1,57 +1,43 @@
+{% extends 'RioLujan/FormulariosPlantilla.html' %}
+{% block head %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Landing Page - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+{% endblock %}
 
-<!DOCTYPE html>
-<html lang="es">
-    {% extends 'RioLujan/origen.html' %}
-    {% block head%}
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Landing Page - Start Bootstrap Theme</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-
-    {% endblock %}
-
-<body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Estado de Aprobación Actualizar</div>
-                    <div class="card-body">
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                                <label for="lote" class="form-label">Lote - Parcela</label>
-                                {{ form.lote }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="actualizacion" class="form-label">Fecha de Actualizacion</label>
-                                {{ form.actualizacion }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="estado" class="form-label">Estado</label>
-                                {{ form.estado }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="denominacion" class="form-label">Denominacion</label>
-                                {{ form.denominacion }}
-                            </div>
-                            <div class="mb-3">
-                                <label for="capacidad" class="form-label">Capacidad</label>
-                                {{ form.capacidad }}
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <form action="{% url 'delete_Estado_De_Aprobacion' estado.id %}" method="post">
-                               
-                                <button type="submit" class="btn btn-danger delete-button">Borrar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+{% block formulario %}
+<form action="" method="post"> {% csrf_token %}
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="lote" class="form-label" style="color: black;">Lote - Parcela</label>
+        {{ form.lote }}
     </div>
-</body>
+    <div class="mb-3">
+        <label for="actualizacion" class="form-label" style="color: black;">Fecha de Actualizacion</label>
+        {{ form.actualizacion }}
+    </div>
+    <div class="mb-3">
+        <label for="estado" class="form-label" style="color: black;">Estado</label>
+        {{ form.estado }}
+    </div>
+    <div class="mb-3">
+        <label for="denominacion" class="form-label" style="color: black;">Denominacion</label>
+        {{ form.denominacion }}
+    </div>
+    <div class="mb-3">
+        <label for="capacidad" class="form-label" style="color: black;">Capacidad</label>
+        {{ form.capacidad }}
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    
+</form>
 
-</html>
+<form action="{% url 'delete_Estado_De_Aprobacion' estado.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger delete-button">Borrar</button>
+</form>
+{% endblock %}
