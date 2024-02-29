@@ -4,14 +4,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Landing Page - Start Bootstrap Theme</title>
+        <title>Cargar Estado de Aprobacion</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        
 
     {% endblock %}
+    {% block botones %}
+    <form action="{% url 'Estado_De_Aprobacion' %}" method="get">
+        <a href="{% url 'Estado_De_Aprobacion' %}" class="btn btn-danger">Volver</a>
+
+        
+    </form>
+    {% endblock %}
+    
 
 
     {% block formulario %}
+    
+   
+    <form action="" method="post">
+        {% csrf_token %}
+
+
     <div class="mb-3">
         <label for="lote" class="form-label">Lote - Parcela</label>
         {{ form.lote }}
@@ -32,6 +47,9 @@
         <label for="capacidad" class="form-label">Capacidad</label>
         {{ form.capacidad }}
     </div>
-    <button type="submit" class="btn btn-primary">Agregar</button>
+    
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+    
 {% endblock %}
 

@@ -16,8 +16,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <style>
             .main-content {
+                margin-top: 40px; /* Ajusta este valor según el alto de tu navbar */
+            }
+            .second-content {
                 margin-top: 140px; /* Ajusta este valor según el alto de tu navbar */
             }
+            
         </style>
 
         {% block head%}
@@ -35,8 +39,7 @@
                     <img src="{% static 'RioLujan/assets/img/logo.png' %}" alt="Logo" style="width: 200px; height: auto;">
                     
                 </div>
-                {% block botones %}
-                {% endblock %}
+                
                 {% if user.is_authenticated %}
                     <a class="btn btn-primary ml-auto">{{ request.user.username }}</a>
                 {% else %}
@@ -44,26 +47,38 @@
                 {% endif %}
             </div>
             <p class="navbar-text">Obra Rio Rio Lujan</p> <!-- Agrega este elemento de párrafo -->
+            
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
              </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto"> <!-- Alinea el menú desplegable a la derecha -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Página 1</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Página 2</a>
-                </li>
-                <li class="nav-item">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto"> <!-- Alinea el menú desplegable a la derecha -->
+                 <li class="nav-item active">
+                    <a class="nav-link" href="seleccionar">Inicio</a>
+                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="Estado_De_Aprobacion">Estado de Aprobacion</a>
+                 </li>
+                    <li class="nav-item">
                     <a class="nav-link" href="#">Página 3</a>
-                </li>
-            </ul>
-        </div>
-        </nav>
+                    </li>
+                 </ul>
+            </div>
+
+            
         
+        </nav>
+    
     <body>
+         
+        <div class="container mx-auto text-left second-content">
+
+            
+            {% block botones %}
+                {% endblock %}
+            </div>
+
         
         <div class="container mx-auto text-center main-content"> <!-- Agrega las clases mx-auto, text-center y main-content -->
             <div class="row justify-content-center">

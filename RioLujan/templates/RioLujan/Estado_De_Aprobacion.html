@@ -14,7 +14,10 @@
     <a class="bootstrap-icons" href="{% url 'seleccionar' %}">Salir</a>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-
+    {% block tituloGrande %}
+    <div style="font-size: 3em; font-weight: bold; background-color: rgba(50, 50, 50, 0.8); color: white; padding: 20px; border-radius: 10px">Estados de Aprobación</div>
+    
+    {% endblock %}
 
     {% block debajomasthead %}
     <style>
@@ -78,7 +81,7 @@
             {% endfor %}
         </div>
     </div>
-    
+   
     
 </body>
 

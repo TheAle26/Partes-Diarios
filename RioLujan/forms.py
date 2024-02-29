@@ -31,7 +31,7 @@ class Estado_De_Aprobacion_Form(forms.ModelForm):
         widgets = {
             'actualizacion': forms.DateInput(attrs={'type': 'date'}),
             'estado': forms.Select(choices=[('Firmada', 'Firmada'), ('DPH', 'DPH'), ('Tratativas', 'Tratativas')]),
-            'lote': forms.Select(choices=[(lote.id, lote.lote) for lote in Lote.objects.all()])
+            'lote': forms.Select(choices=[(lote.lote, lote.lote) for lote in Lote.objects.all()])
         }
 
         def __init__(self, *args, **kwargs):

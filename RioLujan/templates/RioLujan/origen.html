@@ -46,15 +46,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto"> <!-- Alinea el menú desplegable a la derecha -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Página 1</a>
+                   <a class="nav-link" href="{% url 'seleccionar' %}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Página 2</a>
+                   <a class="nav-link" href="{% url 'Estado_De_Aprobacion' %}">Estado de Aprobacion</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Página 3</a>
-                </li>
-            </ul>
+                   <li class="nav-item">
+                   <a class="nav-link" href="#">Página 3</a>
+                   </li>
+                </ul>
         </div>
         </nav>
         
@@ -63,7 +63,7 @@
         <body>
         <!-- Masthead-->
         <header class="masthead">
-            <div class="container position-fixed">
+            
                 <div class="row justify-content-center">
                     <div class="col-xl-6">
                         <div class="text-center text-white">
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </header>
     </body>
     {% block debajomasthead %}
